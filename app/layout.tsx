@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Host_Grotesk } from "next/font/google";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-// One family throughout. Scale and weight do the work: large and tight for
-// names and statements, regular for reading.
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+// One family throughout, set at modest sizes and solid weights.
+const host = Host_Grotesk({ subsets: ["latin"], variable: "--font-host" });
 
 const title = `${SITE.name}: ${SITE.tagline}`;
 
@@ -13,6 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title,
   description: SITE.description,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f3f0" },
-    { media: "(prefers-color-scheme: dark)", color: "#08090a" },
+    { media: "(prefers-color-scheme: light)", color: "#efeee9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0c" },
   ],
   viewportFit: "cover",
 };
@@ -39,7 +39,7 @@ const THEME_INIT = `(function(){var m=matchMedia("(prefers-color-scheme: light)"
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={geist.variable}>
+    <html lang="en" suppressHydrationWarning className={host.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>

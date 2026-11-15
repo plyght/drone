@@ -224,7 +224,7 @@ function Drone({
         x={label.x}
         y={label.y}
         textAnchor={label.anchor}
-        fontSize={small ? 13 : 14}
+        fontSize={small ? 15 : 17}
         fontWeight={600}
         fill={active ? FG : "var(--color-muted)"}
         style={{ transition: "fill 0.4s var(--ease-out)" }}
@@ -301,7 +301,7 @@ function Scene({
   const down = ease(seg(p, 0.56, 0.9));
   const thinking = mode === 1 && p > 0.38 && p < 0.58;
   const text = {
-    fontSize: wide ? 14 : 13,
+    fontSize: wide ? 17 : 15,
     fontWeight: 600,
     fill: "var(--color-muted)",
   };
@@ -654,7 +654,7 @@ export function TalkFigure() {
             onFocus={() => hold(i)}
             onBlur={release}
             onClick={() => hold(i)}
-            className={`h-10 cursor-pointer rounded-full px-4 text-[14px] font-semibold transition-[background-color,color,scale] duration-150 ease-out active:scale-[0.97] max-sm:h-11 ${
+            className={`h-10 cursor-pointer rounded-full px-4 text-[16px] font-semibold transition-[background-color,color,scale] duration-150 ease-out active:scale-[0.97] max-sm:h-11 ${
               i === mode ? "bg-fg text-paper" : "bg-paper text-fg"
             }`}
           >
@@ -667,18 +667,18 @@ export function TalkFigure() {
       <div className="mt-5 min-h-[136px] max-w-[66ch] sm:min-h-[84px]">
         <p
           key={mode}
-          className="arrive m-0 text-[16px] font-medium leading-[1.45] text-fg sm:text-[17px]"
+          className="arrive m-0 text-[18px] font-medium leading-[1.45] text-fg sm:text-[18px]"
         >
           {m.caption}
           {m.note ? (
-            <span className="mt-1.5 block text-[14px] font-semibold text-muted">
+            <span className="mt-1.5 block text-[16px] font-semibold text-muted">
               {m.note}
             </span>
           ) : null}
         </p>
       </div>
 
-      <ul className="m-0 mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0 text-[14px] font-semibold text-fg">
+      <ul className="m-0 mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0 text-[16px] font-semibold text-fg">
         <li className="flex items-center gap-2">
           <span aria-hidden className="size-3 rounded-[3px] bg-accent" />
           Direct

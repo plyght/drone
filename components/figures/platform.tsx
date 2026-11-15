@@ -240,7 +240,7 @@ export function PlatformFigure() {
     const rw = (u * ASPECT) / hRatio; // equal area: width gives back what height takes
     return { x: cx - rw / 2, y: yBed - rh, width: rw, height: rh };
   };
-  const label = { fontSize: phone ? 13 : 14, fontWeight: 600 };
+  const label = { fontSize: phone ? 15 : 17, fontWeight: 600 };
 
   // Workbench loop geometry: six pills down a rail, with room under the last.
   const railX = 12;
@@ -255,7 +255,7 @@ export function PlatformFigure() {
       className="grid gap-y-12 font-sans lg:h-[clamp(420px,48vw,560px)] lg:grid-cols-[1.3fr_1fr] lg:gap-x-16"
     >
       <div className="flex h-[400px] min-w-0 flex-col lg:h-auto">
-        <p className="flex flex-wrap items-baseline gap-x-3 text-[14px] font-semibold text-muted" aria-hidden="true">
+        <p className="flex flex-wrap items-baseline gap-x-3 text-[16px] font-semibold text-muted" aria-hidden="true">
           <span className="text-[48px] font-bold leading-none tracking-[-0.03em] text-accent tabular-nums">
             {stiff.toFixed(2)}x
           </span>
@@ -334,7 +334,7 @@ export function PlatformFigure() {
             />
           </div>
         </div>
-        <div className="mt-1 flex justify-between text-[13px] font-semibold text-muted sm:text-[14px]" aria-hidden="true">
+        <div className="mt-1 flex justify-between text-[16px] font-semibold text-muted sm:text-[16px]" aria-hidden="true">
           <span>Baseline</span>
           <span className={atStudy ? "text-fg" : undefined}>Mercury&apos;s study</span>
         </div>
@@ -399,12 +399,12 @@ export function PlatformFigure() {
                   onClick={() => setPin(pin === i ? null : i)}
                 >
                   <span
-                    className={`flex h-10 items-center whitespace-nowrap rounded-full px-4 text-[14px] font-semibold transition-colors duration-300 ${tone}`}
+                    className={`flex h-10 items-center whitespace-nowrap rounded-full px-4 text-[16px] font-semibold transition-colors duration-300 ${tone}`}
                   >
                     {step.label}
                   </span>
                   {i === 5 && (
-                    <span className="mt-1 block whitespace-nowrap px-4 text-[13px] font-semibold text-muted sm:text-[14px]">
+                    <span className="mt-1 block whitespace-nowrap px-4 text-[16px] font-semibold text-muted sm:text-[16px]">
                       After first flights
                     </span>
                   )}
@@ -412,7 +412,7 @@ export function PlatformFigure() {
               );
             })}
         </div>
-        <p className="mt-5 min-h-[3lh] max-w-[36ch] text-[16px] font-medium leading-[1.45] text-fg">
+        <p className="mt-5 min-h-[3lh] max-w-[36ch] text-[18px] font-medium leading-[1.45] text-fg">
           {STEPS[view.active].note}
         </p>
       </div>

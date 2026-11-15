@@ -3,72 +3,70 @@ import { SITE } from "@/lib/site";
 import { HeroFilm } from "./hero-film";
 import { Mark } from "./mark";
 
-const HEADLINE = SITE.tagline;
-// The headline resolves a character at a time, once the film has begun to appear.
-const HEAD_AT = 320;
-const PER_CHAR = 14;
-const HEAD_DONE = HEAD_AT + HEADLINE.length * PER_CHAR + 300;
-
 const at = (ms: number) => ({ style: { ["--resolve-delay" as string]: `${ms}ms` } });
 
 /**
- * The opening scene fills the screen: a studio film, close on a rotor, with
- * the one line that says what Mercury is set across it at full size.
+ * The opening: the mark, one studio film close on a rotor, then the line
+ * that says what Mercury is and a few sentences of what follows from it.
  */
 export function Hero() {
-  let n = 0;
   return (
-    <section
-      id="top"
-      aria-labelledby="hero-title"
-      className="relative isolate flex h-[100svh] min-h-[560px] flex-col justify-between overflow-hidden bg-plate text-plate-fg"
-    >
-      <HeroFilm
-        video={asset("/img/hero.mp4")}
-        poster={asset("/img/hero.webp")}
-        className="arrive absolute inset-0 -z-10 h-full w-full"
-      />
-      {/* Shade at the foot, so the line holds over any frame of the film. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,#050607f2_0%,#050607a6_30%,#05060700_62%)]"
-      />
-
-      <header className="flex items-center justify-between p-5 sm:p-8">
-        <a href="#top" {...at(80)} className="arrive flex items-center gap-3 text-[21px] font-semibold tracking-[-0.04em]">
-          <Mark className="size-[26px]" />
+    <div id="top" className="mx-auto max-w-[1400px] px-5 pt-6 sm:px-10 sm:pt-7">
+      <header className="flex items-center justify-between">
+        <a href="#top" {...at(0)} className="arrive flex items-center gap-2.5 text-[19px] font-semibold tracking-[-0.03em]">
+          <Mark className="size-[19px]" />
           {SITE.name}
         </a>
-        <a
-          href="#fleet"
-          {...at(HEAD_DONE)}
-          className="arrive pill bg-plate-fg text-plate hover:bg-accent"
-        >
+        <a href="#fleet" {...at(120)} className="arrive btn">
           See the fleet
         </a>
       </header>
 
-      <div className="p-5 sm:p-8">
+      <div
+        {...at(200)}
+        className="arrive relative mt-6 overflow-hidden rounded-[var(--radius-plate)] bg-plate sm:mt-7"
+      >
+        <HeroFilm
+          video={asset("/img/hero.mp4")}
+          poster={asset("/img/hero.webp")}
+          className="h-[min(62svh,600px)] min-h-[300px] w-full"
+        />
+      </div>
+
+      <section aria-labelledby="hero-title" className="grid gap-x-20 gap-y-8 pt-10 sm:pt-12 lg:grid-cols-[1.2fr_1fr]">
         <h1
           id="hero-title"
-          aria-label={HEADLINE}
-          className="display max-w-[9.5em] text-[clamp(2.9rem,8.6vw,8.8rem)]"
+          {...at(420)}
+          className="arrive max-w-[13em] text-[clamp(2rem,3.3vw,2.9rem)] font-[560] leading-[1.06] tracking-[-0.04em]"
         >
-          {HEADLINE.split(" ").map((word, w) => (
-            <span key={w} aria-hidden className="inline-block whitespace-pre">
-              {[...word].map((ch, c) => (
-                <span key={c} className="hero-char inline-block" {...at(HEAD_AT + n++ * PER_CHAR)}>
-                  {ch}
-                </span>
-              ))}
-              {(n++, " ")}
-            </span>
-          ))}
+          {SITE.tagline}
         </h1>
-        <p {...at(HEAD_DONE + 90)} className="arrive mt-6 text-[15px] font-medium text-plate-fg/80 sm:mt-8">
-          A rotor of Prometheus, our flagship design, rendered in the studio.
-        </p>
-      </div>
-    </section>
+        <div className="max-w-[34em] space-y-4 text-muted">
+          <p {...at(510)} className="arrive">
+            Mercury designs aircraft that carry, reach and respond, so that a drone can check in on someone, help in a
+            rescue or inspect what is hard to reach instead of only filming it.
+          </p>
+          <p {...at(600)} className="arrive">
+            We are designing{" "}
+            <a href="#fleet" className="link text-fg">
+              a family of single-job drones
+            </a>{" "}
+            on the way to{" "}
+            <a href="#prometheus" className="link text-fg">
+              one flagship
+            </a>
+            , along with{" "}
+            <a href="#platform" className="link text-fg">
+              the platform that designs them
+            </a>
+            . Everything here is a design, and{" "}
+            <a href="#about" className="link text-fg">
+              none of it has flown yet
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }

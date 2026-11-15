@@ -289,7 +289,7 @@ export function FlyFigure() {
               onBlur={release}
               // A tap holds the layer; tapping it again lets the loop run on.
               onClick={() => select(i, touch.current ? !(sim.current.held && sim.current.mode === i) : true)}
-              className={`${pill} h-11 px-4 text-[14px] sm:h-10 ${mode === i ? "bg-fg text-paper" : "bg-paper text-fg"}`}
+              className={`${pill} h-11 px-4 text-[16px] sm:h-10 ${mode === i ? "bg-fg text-paper" : "bg-paper text-fg"}`}
             >
               {m.name}
             </button>
@@ -297,7 +297,7 @@ export function FlyFigure() {
         </div>
 
         {/* Reserve the tallest caption's room so nothing shifts as layers change. */}
-        <p className="m-0 min-h-[4.5em] max-w-[54ch] text-[16px] font-medium leading-[1.45] text-fg sm:min-h-[2.9em] sm:text-[17px]">
+        <p className="m-0 min-h-[4.5em] max-w-[54ch] text-[18px] font-medium leading-[1.45] text-fg sm:min-h-[2.9em] sm:text-[18px]">
           <span key={mode} className="arrive block">
             {MODES[mode]!.caption}
           </span>
@@ -307,7 +307,7 @@ export function FlyFigure() {
           {LOOP.map((word, i) => (
             <li
               key={word}
-              className={`flex h-8 items-center rounded-full px-2 text-[13px] font-semibold transition-colors duration-300 sm:px-3 sm:text-[14px] ${
+              className={`flex h-8 items-center rounded-full px-2 text-[16px] font-semibold transition-colors duration-300 sm:px-3 sm:text-[16px] ${
                 i === step ? "bg-accent text-paper" : "bg-paper text-fg"
               }`}
             >
@@ -317,7 +317,7 @@ export function FlyFigure() {
         </ol>
       </div>
 
-      <p className="m-0 mt-4 text-[14px] font-medium leading-[1.45] text-muted">
+      <p className="m-0 mt-4 text-[16px] font-medium leading-[1.45] text-muted">
         Outdoors, RTK positioning with two antennas gives position and heading. Near structures or indoors, lidar and
         vision take over.
       </p>
@@ -331,7 +331,7 @@ function SceneSvg({ sc, w, h, hits, v, beam }: { sc: Scene; w: number; h: number
   const fg = "var(--color-fg)";
   const cy = "var(--color-accent)";
   const paper = "var(--color-paper)";
-  const label = wide ? 14 : 13;
+  const label = wide ? 17 : 15;
 
   const low = sc.gap * (1 - LOW_M / HOVER_M);
   const dy = drone.y + v.drop * low;

@@ -33,20 +33,31 @@ sure of.
 
 ## The look
 
-- **One family, Geist.** Scale and weight do the work: `.display` for names
-  and the big lines, `.title` for a chapter's opening line, `.lede` under it.
-- **Nothing is hairline.** No monospace labels, no faint grey text, no 12px
-  captions. Secondary text is `text-muted` and at least 14px, usually medium
-  weight. Tags and buttons are solid pills (`.pill`, `.tag`).
+The page belongs to the same family as the owner's other sites: a quiet
+shell, modest type, prose with underlined links, a lot of air, and one live
+treatment of the subject that is Mercury's own.
+
+- **The lidar view is the signature.** In the fleet section each drone is
+  drawn live as a cloud of points sampled from its real surface
+  (`lib/cloud.ts`). Picking another name re-forms the cloud into that
+  aircraft; it turns under a drag and coasts at the speed it was let go.
+- **Studio renders are the photographs.** The opening film and the close-up
+  plates are Cycles renders of a dark studio and stay dark in both themes
+  (`bg-plate`).
+- **One family of type** (Host Grotesk for now; a fitted face is planned),
+  at modest sizes: 18px reading text, `.sec-h` for a section heading, one
+  larger line in the hero and at the close.
+- **Nothing is hairline.** No monospace labels, no thin grey text, no 1px
+  rules. Secondary text is `text-muted` and never under 16px. Structure
+  comes from space, not lines.
 - **Colour comes from tokens** in `app/globals.css`, which flip under
   `html[data-theme="light"]`. Cyan (`accent`) marks what is live or direct,
-  amber marks what is relayed or charging. Render plates are photographs of a
-  dark studio and stay dark in both themes (`bg-plate`, `text-plate-fg`).
-- **Entrances resolve focus.** Things arrive through opacity and blur
-  (`Resolve`, `.arrive`), never by sliding in. Do not blur full-screen
-  surfaces. Loops pause off screen, and reduced motion gets the finished state.
-- **No top navigation.** The page is one scroll: film, statement, flight
-  line, pinned scenes, three diagrams, founder, contact.
+  amber marks what is relayed or charging.
+- **Links are underlined text. There is one small flat button** (`.btn`).
+  No top navigation, no pills, no cards.
+- **Entrances resolve focus.** Things arrive through opacity and a 6px blur
+  (`Resolve`, `.arrive`), never by sliding in. Nothing blurs a full-screen
+  surface. Loops pause off screen, and reduced motion gets the finished state.
 
 ## Copy
 
