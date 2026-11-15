@@ -33,31 +33,37 @@ sure of.
 
 ## The look
 
-The page belongs to the same family as the owner's other sites: a quiet
-shell, modest type, prose with underlined links, a lot of air, and one live
-treatment of the subject that is Mercury's own.
+The whole page is drawn with one field of points, the way a lidar would see
+it. That is Mercury's own treatment, and everything else stays quiet around it.
 
-- **The lidar view is the signature.** In the fleet section each drone is
-  drawn live as a cloud of points sampled from its real surface
-  (`lib/cloud.ts`). Picking another name re-forms the cloud into that
-  aircraft; it turns under a drag and coasts at the speed it was let go.
-- **Studio renders are the photographs.** The opening film and the close-up
-  plates are Cycles renders of a dark studio and stay dark in both themes
-  (`bg-plate`).
+- **One cloud, many scenes.** `lib/cloud.ts` holds a fixed number of points
+  and `lib/targets.ts` says what they can become: an aircraft sampled from its
+  real surface, the tool rack, the fleet passing messages as streams of
+  points, a room found by a lidar sweep, two printed arms under load, the
+  Mercury mark. `components/world.tsx` owns the one instance and re-forms it
+  as each chapter crosses the middle of the screen, so the page never cuts.
+  New ideas get a new target in that file, not a separate diagram.
+- **Text holds the left, points hold the right.** On a phone the field is a
+  band across the top and the text scrolls under it. It turns under a drag
+  and coasts at the speed it was let go.
+- **Studio renders are the one place the points step aside.** The film and
+  the close-up plates are Cycles renders of a dark studio and stay dark in
+  both themes (`bg-plate`).
 - **One family of type** (Host Grotesk for now; a fitted face is planned),
-  at modest sizes: 18px reading text, `.sec-h` for a section heading, one
+  at modest sizes: 18px reading text, `.sec-h` for a chapter's heading, one
   larger line in the hero and at the close.
 - **Nothing is hairline.** No monospace labels, no thin grey text, no 1px
   rules. Secondary text is `text-muted` and never under 16px. Structure
   comes from space, not lines.
 - **Colour comes from tokens** in `app/globals.css`, which flip under
-  `html[data-theme="light"]`. Cyan (`accent`) marks what is live or direct,
-  amber marks what is relayed or charging.
-- **Links are underlined text. There is one small flat button** (`.btn`).
-  No top navigation, no pills, no cards.
-- **Entrances resolve focus.** Things arrive through opacity and a 6px blur
-  (`Resolve`, `.arrive`), never by sliding in. Nothing blurs a full-screen
-  surface. Loops pause off screen, and reduced motion gets the finished state.
+  `html[data-theme="light"]`; the field reads them, so it follows the theme.
+  Cyan (`accent`) marks what is live or direct, amber what is relayed or
+  charging, orange the TPU feet.
+- **Choices are underlined text** (`.choice`): a drone, a tool head, a mode.
+  There is one small flat button (`.btn`). No navigation bar, pills or cards.
+- **Motion is the field re-forming.** Text arrives through opacity and a 6px
+  blur (`.arrive`, `.swap`), never by sliding in. With reduced motion the
+  field draws each scene still.
 
 ## Copy
 

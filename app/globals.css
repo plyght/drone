@@ -73,17 +73,20 @@ body {
   border-radius: 4px;
 }
 
-p,
-li {
-  margin: 0;
-  text-wrap: pretty;
-}
+/* In the base layer, so spacing utilities on a paragraph or heading still win. */
+@layer base {
+  p,
+  li {
+    margin: 0;
+    text-wrap: pretty;
+  }
 
-h1,
-h2,
-h3 {
-  margin: 0;
-  text-wrap: balance;
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    text-wrap: balance;
+  }
 }
 
 /* A section's heading and the sentence under it. */
@@ -183,12 +186,15 @@ h3 {
   }
 }
 
-/* The roster. The selected name is underlined in the accent; the rest wait in the muted step. */
-.roster {
+/* A text choice (a drone, a tool head, a mode). The chosen one is underlined
+   in the accent; the rest wait in the muted step. */
+.choice {
+  display: flex;
+  align-items: center;
   transition: color 150ms ease-out;
 }
 
-.roster[aria-pressed="true"] .roster-name {
+.choice[aria-pressed="true"] .choice-name {
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
   text-decoration-thickness: 2px;
@@ -196,7 +202,57 @@ h3 {
 }
 
 @media (hover: hover) {
-  .roster:hover {
+  .choice:hover {
     color: var(--color-fg);
   }
+}
+
+/* Names that follow points in the field. */
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  color: var(--color-fg);
+  will-change: transform;
+}
+
+/* The stiffness slider: a solid track and a solid thumb, sized for a thumb. */
+.slider {
+  height: 44px;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--color-fg) 28%, transparent);
+}
+
+.slider::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--color-fg) 28%, transparent);
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: var(--color-fg);
+}
+
+.slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-fg);
 }
