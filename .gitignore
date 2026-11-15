@@ -1,0 +1,13 @@
+.next/
+next-env.d.ts
+.env*
+!.env.example
+tsconfig.tsbuildinfo
+.vercel
+node_modules/
+/out/
+
+# Scratch output from the UI review skill
+.ui-review/
+design-plans/
+__pycache__/
