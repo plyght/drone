@@ -530,6 +530,7 @@ export function World() {
             </a>
             .
           </p>
+          <p className="mt-3 select-all font-semibold">{SITE.email}</p>
           <p className="mt-12 text-[16px] text-muted">
             © 2026 {SITE.name}. {SITE.footnote}
           </p>

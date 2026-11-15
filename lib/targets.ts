@@ -19,6 +19,8 @@ type Sample = { pos: Float32Array; nor: Float32Array; cls: Float32Array; n: numb
 
 const CLASS: Record<string, number> = { Electronics: 1, "Flexible TPU": 2 };
 const SAMPLE_SIZE = 84000;
+// The site ships binary GLBs. The shareable artifact can only serve glTF as JSON.
+const MODEL_EXT = process.env.NEXT_PUBLIC_MODEL_EXT ?? "glb";
 const samples = new Map<string, Promise<Sample>>();
 
 /** Load a model once and scatter points over its surface, by area. */
@@ -30,7 +32,7 @@ export function sample(THREE: Three, id: string): Promise<Sample> {
       import("three/examples/jsm/loaders/GLTFLoader.js"),
       import("three/examples/jsm/libs/meshopt_decoder.module.js"),
     ]);
-    const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(asset(`/models/${id}.glb`));
+    const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(asset(`/models/${id}.${MODEL_EXT}`));
     gltf.scene.updateMatrixWorld(true);
     const tris: number[] = [];
     const meta: number[] = []; // weight, class

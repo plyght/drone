@@ -1,0 +1,23 @@
+
+/* Artifact additions. The typeface comes from Google Fonts here, and the
+   light theme also follows the system when the host has set no theme. */
+:root {
+  --font-host: "Host Grotesk";
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --color-paper: #efeee9;
+    --color-raised: #e4e3dd;
+    --color-fg: #121211;
+    --color-muted: #121211c7;
+    --color-accent: #06789b;
+    --color-amber: #a35f05;
+    --color-tpu: #c9571a;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}

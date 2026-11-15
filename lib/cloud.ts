@@ -186,7 +186,7 @@ export class Cloud {
 
     this.readTheme();
     const mo = new MutationObserver(() => this.readTheme());
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-scheme"] });
     const ro = new ResizeObserver(() => this.resize());
     ro.observe(this.host);
     const wake = () => this.kick();
